@@ -22,6 +22,7 @@ public class SecondActivity extends AppCompatActivity {
                 EditText answer = findViewById(R.id.answer);
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 intent.putExtra("answer", answer.getText().toString());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });
