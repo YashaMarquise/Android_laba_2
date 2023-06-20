@@ -16,7 +16,7 @@
         android:hint="@string/question_hint_text"
         android:inputType="text"
         android:textAlignment="center"
-        android:textColorHint="#8C8C8C"
+        android:textColorHint="#9F3838"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonForward"
         app:layout_constraintEnd_toEndOf="parent"

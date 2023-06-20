@@ -1,6 +1,8 @@
 package com.yasha.task2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,8 +24,8 @@ public class SecondActivity extends AppCompatActivity {
                 EditText answer = findViewById(R.id.answer);
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 intent.putExtra("answer", answer.getText().toString());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                setResult(Activity.RESULT_OK,intent);
+                finish();
             }
         });
         Bundle extra = getIntent().getExtras();

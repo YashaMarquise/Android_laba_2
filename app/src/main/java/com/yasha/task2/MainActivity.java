@@ -1,6 +1,8 @@
 package com.yasha.task2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,21 +18,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = (Button) findViewById(R.id.buttonForward);
-        button.setOnClickListener(new View.OnClickListener()
-        {
+        button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 EditText question = findViewById(R.id.questionText);
                 Intent intent = new Intent(view.getContext(), SecondActivity.class);
                 intent.putExtra("question", question.getText().toString());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                startActivity(intent);
+                startActivityForResult(intent, 100);
             }
         });
-        Bundle extra = getIntent().getExtras();
-        if(extra!=null){
-            String value = extra.getString("answer");
-            TextView textView = (TextView) findViewById(R.id.answerText);
-            textView.setText(value);
         }
-    }
+        @Override
+        protected  void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            if (requestCode == 100 && resultCode == Activity.RESULT_OK)
+            {
+                 String result = data.getStringExtra("answer");
+                 TextView editor = (TextView) findViewById(R.id.answerText);
+                 editor.setText(result);
+            }
+        }
+
 }
